@@ -123,9 +123,10 @@ public final class SavingsHelper {
                 periodEndDate = periodStartDate;
             break;
             case MONTHLY:
-                // produce period end date on last day of current month
-                periodEndDate = periodStartDate.with(TemporalAdjusters.lastDayOfMonth());
-            break;
+                // produce period end date in a monthly frequency since account activation date
+//                periodEndDate = periodStartDate.with(TemporalAdjusters.lastDayOfMonth());
+                 periodEndDate = periodStartDate.plusMonths(1);
+                break;
             case QUATERLY:
                 for (LocalDate quarterlyDate : quarterlyDates) {
                     if (quarterlyDate.isAfter(periodStartDate)) {
